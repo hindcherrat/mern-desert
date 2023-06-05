@@ -8,6 +8,9 @@ function Room({ room, fromdate, todate }) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const User =  localStorage.getItem('currentUser')
+
   return (
     <div className="row m-3 p-3 bs">
       <div className="col-md-4">
@@ -29,7 +32,7 @@ function Room({ room, fromdate, todate }) {
 
         <div style={{ float: "right" }}>
           
-          {(fromdate && todate ) && (<Link to={`/book/${room._id}/${fromdate}/${todate}`}>
+          {(User && fromdate && todate ) && (<Link to={`/book/${room._id}/${fromdate}/${todate}`}>
             <button className="btn btn-dark m-2">Reserver maintenant</button>
           </Link>)}
 

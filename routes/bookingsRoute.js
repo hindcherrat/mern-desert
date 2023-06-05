@@ -56,16 +56,16 @@ router.post("/bookroom", async (req, res) => {
             await oldroom.save();
           });
       
-          res.send("Room Booked Successfully");
+          res.send("Chambre réservée avec succès   ");
         } catch (error) {
           console.log(error);
           return res.status(400).json({ message: error });
         }
       } else {
-        res.send("Payment failed");
+        res.send("Paiement échoué ");
       }
     } catch (error) {
-      return res.status(400).json({ message: "Something went wrong" + error });
+      return res.status(400).json({ message: "Quelque chose s'est mal passé   " + error });
     }
 
   
@@ -78,7 +78,7 @@ router.post("/cancelbooking", async (req, res) => {
   try {
 
     const bookingitem = await Booking.findOne({_id: bookingid}) 
-    bookingitem.status='cancelled'
+    bookingitem.status='annulé '
     await bookingitem.save();
     const room = await Room.findOne({_id:roomid})
     const bookings = room.currentbookings
@@ -87,10 +87,10 @@ router.post("/cancelbooking", async (req, res) => {
     room.currentbookings=temp;
     await room.save()
 
-    res.send('Booking deleted successfully')
+    res.send('Réservation supprimée avec succès  ')
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ message: "something went wrong" });
+    return res.status(400).json({ message: "quelque chose s'est mal passé  " });
   }
 });
 
@@ -100,7 +100,7 @@ router.post("/getuserbookings", async (req, res) => {
     const bookings = await Booking.find({ userid: userid }).sort({ _id: -1 });
     res.send(bookings);
   } catch (error) {
-    return res.status(400).json({ message: "Something went wrong" });
+    return res.status(400).json({ message: "quelque chose s'est mal passé  " });
   }
 });
 

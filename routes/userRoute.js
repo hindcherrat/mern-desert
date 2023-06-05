@@ -10,7 +10,7 @@ router.post("/register", async(req, res) => {
 
     try {
         newUser.save()
-        res.send('User Registered successfully')
+        res.send('Utilisateur enregistré avec succès ')
     } catch (error) {
          return res.status(400).json({ message: error });
     }
@@ -37,11 +37,11 @@ router.post("/login", async(req, res) => {
             res.send(currentUser);
         }
         else{
-            return res.status(400).json({message: "User Login Failed"});
+            return res.status(400).json({message: "La connexion de l'utilisateur a échoué   "});
         }
 
     } catch (error) {
-           return res.status(400).json({ message: 'Something went weong' });
+           return res.status(400).json({ message: 'Quelque chose s est passé    ' });
     }
   
 });
@@ -59,12 +59,12 @@ router.get("/getallusers", async(req, res) => {
 });
 
 router.delete("/deleteuser/:id",  async (req, res) => {
-    const userId = req.params.id // Get the user id from the request parameters
+    const userId = req.params.id 
     try {
-      await User.findByIdAndDelete(userId) // Find and delete the user with the given id
-      res.status(200).send('User deleted successfully') // Send a success response with status code 200
+      await User.findByIdAndDelete(userId) 
+      res.status(200).send('Utilisateur supprimé avec succès      ') 
     } catch (error) {
-      res.status(400).send(error.message) // Send an error response with status code 400 and the error message
+      res.status(400).send(error.message) 
     }
   }
 );

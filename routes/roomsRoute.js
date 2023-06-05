@@ -8,7 +8,7 @@ router.get("/getallrooms", async (req, res) => {
           const rooms = await Room.find()
      res.send(rooms)
      } catch (error) {
-          return res.status(400).json({ message: 'something went wrong' });
+          return res.status(400).json({ message: 'quelque chose s est mal passé   ' });
      }
 
 });
@@ -28,7 +28,7 @@ router.delete("/deleteroom/:id", async(req,res) => {
      const roomId = req.params.id
      try {
           await Room.findByIdAndDelete(roomId)
-          res.status(200).json({message: "deleted Successfully"})
+          res.status(200).json({message: "Supprimé avec succès  "})
      } catch (error) {
           return res.status(400).json({message: error})
      }
@@ -55,7 +55,7 @@ router.post("/addroom", async(req, res) => {
      })
      try {
           await newroom.save()
-          res.send('New Room Added Successfully')
+          res.send('Nouvelle salle ajoutée avec succès   ')
      } catch (error) {
           return res.status(400).json({ error });
      }
